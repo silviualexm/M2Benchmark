@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+
+		<!-- Bootstrap CSS -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+			integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+			crossorigin="anonymous"
+		/>
+		<style>
+			.dropdown-item,
+			.fas {
+				padding: 0 15px;
+			}
+			#signbtn {
+				color: #de8ae5;
+			}
+		</style>
+
+		<title>GOG.com_Cloned</title>
+	</head>
+	<body>
+		<!--*******************  Navbar  **************-->
+
+		<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark px-5">
+			<a class="navbar-brand" href="#"
+				><img
+					class="rounded"
+					src="data:image/png;base64,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"
+					width="30"
+					height="30"
+					alt=""
+			/></a>
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item dropdown">
+						<a
+							class="nav-link dropdown-toggle"
+							href="#"
+							id="navbarDropdown"
+							role="button"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							STORE
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#"
+								><p class="text-info mb-0">EVERSPACE<sup>TM</sup> 2</p></a
+							>
+							<a class="dropdown-item" href="#">Baldur's Gate 3</a>
+							<a class="dropdown-item" href="#"
+								><p class="text-success mb-0">Cyberpunk 2077</p></a
+							>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">New releases</a>
+							<a class="dropdown-item" href="#">Best sellers</a>
+							<a class="dropdown-item" href="#">On sale now</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Adventure</a>
+							<a class="dropdown-item" href="#">Indie</a>
+							<a class="dropdown-item" href="#">RPG</a>
+							<a class="dropdown-item" href="#">Shooters</a>
+							<a class="dropdown-item" href="#">Simulation</a>
+							<a class="dropdown-item" href="#">Sport&Racing</a>
+							<a class="dropdown-item" href="#">Strategy</a>
+							<a class="dropdown-item" href="#">Movies for gamers</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Browse all games</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a
+							class="nav-link dropdown-toggle"
+							href="#"
+							id="navbarDropdown"
+							role="button"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							ABOUT
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">GOG.com</a>
+							<a class="dropdown-item" href="#">GOG Galaxy</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Joing the team</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a
+							class="nav-link dropdown-toggle"
+							href="#"
+							id="navbarDropdown"
+							role="button"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							COMMUNITY
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">All forums</a>
+							<a class="dropdown-item" href="#">General discussion forum</a>
+							<a class="dropdown-item" href="#">Forum replies</a>
+							<a class="dropdown-item" href="#">Community wishlist</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Facebook</a>
+							<a class="dropdown-item" href="#">Twitter</a>
+							<a class="dropdown-item" href="#">Twitch</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a
+							class="nav-link dropdown-toggle"
+							href="#"
+							id="navbarDropdown"
+							role="button"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							SUPPORT
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Game technical issues</a>
+							<a class="dropdown-item" href="#">Orders and payments</a>
+							<a class="dropdown-item" href="#">Account and website</a>
+							<a class="dropdown-item" href="#">Download</a>
+							<a class="dropdown-item" href="#">GOG Galaxy</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a
+							id="signbtn"
+							class="nav-link dropdown-toggle"
+							href="#"
+							id="navbarDropdown"
+							role="button"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							SIGN IN
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<button class="dropdown-item">Create account</button>
+							<button class="dropdown-item" style="background-color: #de8ae5">
+								Sign In
+							</button>
+						</div>
+					</li>
+				</ul>
+				<div class="my-2 my-lg-0">
+					<a href="#"
+						><i class="fas fa-shopping-cart text-white-50 px-3"> 0</i></a
+					>
+					<a href="#"><i class="fas fa-search text-white-50 px-3"></i></a>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<span class="d-flex text-center p-2">
+				<i class="fas fa-pen"></i>
+				<h5>Hightlights</h5>
+			</span>
+
+			<hr />
+
+			<!--*******************  First Carousel  **************-->
+
+			<div
+				id="carouselExampleCaptions"
+				class="carousel slide"
+				data-ride="carousel"
+			>
+				<ol class="carousel-indicators">
+					<li
+						data-target="#carouselExampleCaptions"
+						data-slide-to="0"
+						class="active"
+					></li>
+					<li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+					<li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img src="./img/carousel1.jpg" class="d-block w-100" alt="poza" />
+						<div class="carousel-caption d-none d-md-block">
+							<h5>First slide label</h5>
+							<p>
+								Some representative placeholder content for the first slide.
+							</p>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img src="./img/carousel2.jpg" class="d-block w-100" alt="..." />
+						<div class="carousel-caption d-none d-md-block">
+							<h5>Second slide label</h5>
+							<p>
+								Some representative placeholder content for the second slide.
+							</p>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img src="./img/carousel3.jpg" class="d-block w-100" alt="..." />
+						<div class="carousel-caption d-none d-md-block">
+							<h5>Third slide label</h5>
+							<p>
+								Some representative placeholder content for the third slide.
+							</p>
+						</div>
+					</div>
+				</div>
+				<a
+					class="carousel-control-prev"
+					href="#carouselExampleCaptions"
+					role="button"
+					data-slide="prev"
+				>
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a
+					class="carousel-control-next"
+					href="#carouselExampleCaptions"
+					role="button"
+					data-slide="next"
+				>
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+
+			<div class="card-group mt-3">
+				<div class="card">
+					<img src="./img/tile (1).jpg" class="card-img-top" alt="..." />
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">
+							This is a wider card with supporting text below as a natural
+							lead-in to additional content. This content is a little bit
+							longer.
+						</p>
+						<p class="card-text">
+							<small class="text-muted">Last updated 3 mins ago</small>
+						</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="./img/tile (2).jpg" class="card-img-top" alt="..." />
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">
+							This is a wider card with supporting text below as a natural
+							lead-in to additional content. This content is a little bit
+							longer.
+						</p>
+						<p class="card-text">
+							<small class="text-muted">Last updated 3 mins ago</small>
+						</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="./img/tile (4).jpg" class="card-img-top" alt="..." />
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">
+							This card has supporting text below as a natural lead-in to
+							additional content.
+						</p>
+						<p class="card-text">
+							<small class="text-muted">Last updated 3 mins ago</small>
+						</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="./img/tile (6).jpg" class="card-img-top" alt="..." />
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">
+							This is a wider card with supporting text below as a natural
+							lead-in to additional content. This card has even longer content
+							than the first to show that equal height action.
+						</p>
+						<p class="card-text">
+							<small class="text-muted">Last updated 3 mins ago</small>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr />
+		<div class="container">
+			<div class="row">
+				<div class="col col-8">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia id
+						veritatis soluta cumque similique dolore ipsum modi inventore,
+						accusamus odio impedit facere. Laudantium, beatae. Facilis neque
+						iusto minima voluptate illum!
+					</p>
+				</div>
+				<div class="col col-4">
+					<p>
+						lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia id
+						veritatis soluta cumque similique
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<hr />
+		<!-- Optional JavaScript; choose one of the two! -->
+
+		<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+		<script
+			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+			crossorigin="anonymous"
+		></script>
+
+		<!-- Option 2: Separate Popper and Bootstrap JS -->
+		<!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    -->
+	</body>
+</html>
